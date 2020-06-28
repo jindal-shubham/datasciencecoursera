@@ -1,0 +1,6 @@
+febpower <-rbind(power[power$Date=="1/2/2007",],power[power$Date=="2/2/2007",])
+febpower$Date <- as.Date(febpower$Date,"%d/%m/%Y")
+febpower<-cbind(febpower, "DateTime" = as.POSIXct(paste(febpower$Date, febpower$Time)))
+png("plot2.png", width=480, height=480)
+plot(febpower$Global_active_power ~ febpower$DateTime, type="l", xlab= "", ylab="Global Active power (kilowatts)")
+dev.off()
